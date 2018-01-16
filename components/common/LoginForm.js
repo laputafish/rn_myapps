@@ -12,6 +12,7 @@ export default class Logo extends Component<{}> {
   constructor(props) {
     super(props)
   }
+
   render() {
     return (
       <View style={styles.container}>

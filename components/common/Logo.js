@@ -10,14 +10,17 @@ import {
 import {Actions} from 'react-native-router-flux'
 
 export default class Logo extends Component<{}> {
+
+  home() {
+    Actions.home()
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <TouchableOpacity onPress="Actions.goBack">
         <Image style={{width:100,height:100}}
         source={{uri: 'https://pbs.twimg.com/profile_images/763061332702736385/KoK6gHzp_400x400.jpg'}}/>
         <Text style={styles.logoText}>Welcome to My app.</Text>
-        </TouchableOpacity>
       </View>
     )
   }
