@@ -13,14 +13,25 @@ import {
 import {Actions} from 'react-native-router-flux'
 import Login from './Login.js'
 import Signup from './Signup.js'
+import FetchLocation from '../components/FetchLocation'
 
-var superheroArray = [
-  'Superman',
-  'Batman',
-  'Wonder Woman',
-  'The Flash',
-  'Aquaman',
-  'Green Lantern'
+var dataArray = [
+  {
+    title: 'FlatList Demo',
+    key: 'flatlistdemo'
+  },
+  {
+    title: 'Login Demo',
+    key: 'login'
+  },
+  {
+    title: 'Signup Demo',
+    key: 'signup'
+  },
+  {
+    title: 'Get Location',
+    key: 'get_location'
+  }
 ];
 
 export default class Home extends Component<{}> {
@@ -30,23 +41,35 @@ export default class Home extends Component<{}> {
       {rowHasChanged:(r1,r2) => r1.guid != r2.guid}
     );
     this.state = {
-      dataSource: dataSource.cloneWithRows(superheroArray)
+      dataSource: dataSource.cloneWithRows(dataArray)
     }
   }
 
-  login() {
-    Actions.login()
-  }
-
-  signup() {
-    Actions.signup()
+  onRowPressed = (key) => {
+    switch(key) {
+      case 'login':
+        Actions.login();
+        break;
+      case 'signup':
+        Actions.signup();
+        break;
+      case 'flatlistdemo':
+        Actions.flatlist_demo();
+        break;
+      case 'get_location':
+        Actions.get_location();
+        break;
+    }
   }
 
   renderRow( rowData, sectionID, rowID) {
     return (
-      <TouchableHighlight underlayColor='#dddddd' style={styles.listRow}>
+      <TouchableHighlight
+        underlayColor='#dddddd'
+        onPress={()=>this.onRowPressed(rowData.key)}
+        style={styles.listRow}>
         <View>
-          <Text style={{fontSize: 20, color: '#000000'}} numberOfLines={1}>{rowData}</Text>
+          <Text style={{fontSize: 20, color: '#000000'}} numberOfLines={1}>{rowData.title}</Text>
           <View style={{height: 1, backgroundColor: '#dddddd'}}/>
         </View>
       </TouchableHighlight>
@@ -56,17 +79,13 @@ export default class Home extends Component<{}> {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.toolbar}>
-          <TouchableOpacity onPress={this.login}>
-            <Text>Login</Text>
-          </TouchableOpacity>
-        </View>
         <View style={styles.listviewContainer}>
-        <ListView
-          dataSource={this.state.dataSource}
-          renderRow={this.renderRow.bind(this)}>
-        </ListView>
+          <ListView
+            dataSource={this.state.dataSource}
+            renderRow={this.renderRow.bind(this)}>
+          </ListView>
         </View>
+
       </View>
     )
   }
@@ -85,7 +104,7 @@ const styles = StyleSheet.create({
     height:44,
     marginTop:5,
     padding:5,
-    
+
     justifyContent: 'center',
     flexDirection:'column'
   },
@@ -96,7 +115,7 @@ const styles = StyleSheet.create({
     flexGrow: 1
   },
   listviewContainer: {
-    flexGrow: 1,
-    width: '80%'
+    flexGrow: 0,
+    width: '90%'
   }
 })

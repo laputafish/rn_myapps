@@ -21,13 +21,9 @@ import Blink from './components/Blink';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import Routes from './Routes'
+import MyStatusBar from './components/MyStatusBar';
 
 
-const MyStatusBar = ({backgroundColor, ...pros}) => (
-    <View style={[styles.statusBar, { backgroundColor}]}>
-      <StatusBar translucent backgroundColor={backgroundColor} {...pros}/>
-    </View>
-);
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -36,7 +32,6 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
-const STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 20 : StatusBar.currentHeight;
 const APPBAR_HEIGHT = Platform.OS === 'ios' ? 44 : 56;
 
 export default class App extends Component<{}> {
@@ -47,7 +42,7 @@ export default class App extends Component<{}> {
   render() {
     return (
       <View style={styles.container}>
-        <MyStatusBar backgroundColor="red"
+        <MyStatusBar backgroundColor="#1c313a"
         barStyle="light-content"/>
         <Routes/>
       </View>
@@ -90,10 +85,7 @@ const styles = StyleSheet.create({
     // flex: 1
     flex:1
   },
-  statusBar: {
-      backgroundColor: '#1c313a',
-      height: STATUSBAR_HEIGHT
-  },
+
   tabBar: {
     backgroundColor: 'white',
     height: 60,
