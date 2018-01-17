@@ -6,6 +6,9 @@ import Signup from './pages/Signup';
 import Home from './pages/Home';
 import FlatListDemo from './pages/FlatListDemo';
 import GetLocationDemo from './pages/GetLocationDemo';
+import ChatDemo from './pages/ChatDemo';
+import ChatScreen from './pages/ChatScreen';
+
 //Home, Login, Signup} from './pages';
 
 export default class Routes extends Component<{}> {
@@ -18,6 +21,8 @@ export default class Routes extends Component<{}> {
           <Scene key="home" component={Home} title="Home" initial={true}/>
           <Scene key="flatlist_demo" component={FlatListDemo} title="Flat List Demo"/>
           <Scene key="get_location" component={GetLocationDemo} title="Get Location Demo"/>
+          <Scene key="chat_demo" component={ChatDemo} title="Chat Demo"/>
+          <Scene key="chat_screen" component={ChatScreen} title="Chat Screen"/>
         </Stack>
       </Router>
     )

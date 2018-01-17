@@ -31,6 +31,10 @@ var dataArray = [
   {
     title: 'Get Location',
     key: 'get_location'
+  },
+  {
+    title: 'Chat Demo',
+    key: 'chat_demo'
   }
 ];
 
@@ -59,6 +63,9 @@ export default class Home extends Component<{}> {
       case 'get_location':
         Actions.get_location();
         break;
+      case 'chat_demo':
+        Actions.chat_demo();
+        break;l
     }
   }
 

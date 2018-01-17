@@ -1,11 +1,17 @@
 import React from "react";
-import { Button } from "react-native";
+import {StyleSheet} from 'react-native';
+import { Button } from "react-native-elements";
 
 const fetchLocation = props => {
   return (
-    <Button title="Get location" onPress={props.onGetLocation}>
+    <Button large buttonStyle={styles.buttonStyle} title="Get location" onPress={props.onGetLocation}>
     </Button>
   );
 };
 
+const styles = StyleSheet.create({
+  buttonStyle: {
+    marginTop: 5
+  }
+})
 export default fetchLocation;
